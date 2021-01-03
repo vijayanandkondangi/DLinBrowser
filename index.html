@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+	
+	<script lang = "js">
+	
+		async function run()
+		{
+			// Load the model
+			const model = await tf.loadLayersModel("https://github.com/vijayanandkondangi/models/blob/main/model.json");
+			console.log("Model loaded")
+		}
+	
+	
+		// JS to read the input, compose the tensor, invoke the model and display the prediction
+		function predict() 
+		{ 
+			// Read the inputs
+			var sl = document.getElementById("SL").value
+			var sw = document.getElementById("SW").value
+			var pl = document.getElementById("PL").value
+			var pw = document.getElementById("PW").value
+			
+			// Convert strings to floats
+			var slf = parseFloat(sl);
+			var swf = parseFloat(sw);
+			var plf = parseFloat(pl);
+			var pwf = parseFloat(pw);
+			
+			// Compose the tensor
+			const testVal = tf.tensor2d([slf, swf, plf, pwf], [1, 4]);
+						
+			// Invoke the model and make the prediction
+			const prediction = model.predict(testVal);
+			//const pIndex = tf.argMax(prediction, axis=1).dataSync();
+			//const classNames = [“Setosa”, “Virginica”, “Versicolor”];
+			 
+			//var y = classNames[pIndex]
+			
+			var y = slf + swf + plf+ pwf;
+			
+			// Display the prediction
+			document.getElementById("OP").value = y
+		 } 
+
+		run()
+
+	</script> 
+
+</head>
+
+<body>
+
+	<h1>Iris Classification Prediction</h1>
+
+	<p>Enter the lengths in cms and click on the button:</p>
+
+	<label for="SepalLengthCm">Sepal Length</label>
+	<input type="text" id="SL" value=""/><br>
+	<label for="SepalWidthCm">Sepal Width</label>
+	<input type="text" id="SW" value=""/><br>
+	<label for="PetalLengthCm">Petal Length</label>
+	<input type="text" id="PL" value=""/><br>
+	<label for="PetalWidthCm">Petal Width</label>
+	<input type="text" id="PW" value=""/><br><br>
+	<input type="button" value = "Predict" onclick="predict()"/><br><br>
+	<label for="Output">Class</label>
+	<input type="text" id="OP"/><br><br>
+
+</body>
+</html>
