@@ -10,11 +10,13 @@
 	</script>
 	
 	<script lang = "js">
+		
+		const model;
 	
 		async function run()
 		{
 			// Load the model
-			const model = await tf.loadLayersModel('model/model.json');
+			model = await tf.loadLayersModel('model/model.json');
 			console.log("Model loaded")
 		}
 	
