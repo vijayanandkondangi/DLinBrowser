@@ -43,6 +43,8 @@
 			const prediction = model.predict(testVal)
 			const pIndex = tf.argMax(prediction).dataSync()
 			
+			var y = "";
+			
 			if (pIndex == 0)
 				y = "Setosa";
 			if (pIndex == 1)
