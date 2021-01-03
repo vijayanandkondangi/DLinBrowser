@@ -43,9 +43,11 @@
 			const prediction = model.predict(testVal)
 			var pIndex = tf.argMax(prediction, axis = 1).dataSync()
 			
+			var classNames = ["Setosa", "Virginica", "Versicolor"]
+			
 					
 			// Display the prediction
-			document.getElementById("OP").value = pIndex
+			document.getElementById("OP").value = classNames[pIndex]
 		 } 
 
 		run()
