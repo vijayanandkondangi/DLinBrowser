@@ -42,7 +42,7 @@
 			// Invoke the model and make the prediction
 			const prediction = model.predict(testVal)
 			const pIndex = tf.argMax(prediction).dataSync()
-			var classNames = ["Setosa", "Virginica", "Versicolor"]
+			var classNames = ["Setosa", "Virginica", "Versicolor"];
 			
 			// Display the prediction
 			document.getElementById("OP").value = classNames[pIndex]
