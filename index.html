@@ -3,13 +3,18 @@
 
 <head>
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+	<script 
+		src="https://code.jquery.com/jquery-3.3.1.js" 
+		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" 
+		crossorigin="anonymous">
+	</script>
 	
 	<script lang = "js">
 	
 		async function run()
 		{
 			// Load the model
-			const model = await tf.loadLayersModel("https://github.com/vijayanandkondangi/models/blob/main/model.json");
+			const model = await tf.loadLayersModel('model/model.json');
 			console.log("Model loaded")
 		}
 	
