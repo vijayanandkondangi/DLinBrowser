@@ -41,12 +41,12 @@
 						
 			// Invoke the model and make the prediction
 			const prediction = model.predict(testVal);
-			//const pIndex = tf.argMax(prediction, axis=1).dataSync();
-			//const classNames = [“Setosa”, “Virginica”, “Versicolor”];
+			const pIndex = tf.argMax(prediction, axis=1).dataSync();
+			const classNames = [“Setosa”, “Virginica”, “Versicolor”];
 			 
-			//var y = classNames[pIndex]
+			var y = classNames[pIndex]
 			
-			var y = slf + swf + plf+ pwf;
+			//var y = slf + swf + plf+ pwf;
 			
 			// Display the prediction
 			document.getElementById("OP").value = y
