@@ -11,12 +11,15 @@
 	
 	<script lang = "js">
 		
+		// Initialize global variable to instantiate the model
 		var model = "";
-	
+		
+		// Async function for loading the model from the json file
 		async function run()
 		{
-			// Load the model
+			// Load the trained model from the json file
 			model = await tf.loadLayersModel('model/model.json');
+			// Log the progress in the console log
 			console.log("Model loaded")
 		}
 	
@@ -40,16 +43,20 @@
 			const testVal = tf.tensor2d([slf, swf, plf, pwf], [1, 4]);
 						
 			// Invoke the model and make the prediction
+			// Pass the tensor composed previously, as the input
 			const prediction = model.predict(testVal)
+			
+			// Fetch the index for max probability from the softmax output
 			var pIndex = tf.argMax(prediction, axis = 1).dataSync()
 			
+			// Fetch class name corresponding to max probability using the index fetched at the previous step
 			var classNames = ["Setosa", "Virginica", "Versicolor"]
-			
-					
-			// Display the prediction
+								
+			// Display the prediction, the class name corresponding to max probability
 			document.getElementById("OP").value = classNames[pIndex]
 		 } 
-
+		
+		// Run the async function to load the model
 		run()
 
 	</script> 
